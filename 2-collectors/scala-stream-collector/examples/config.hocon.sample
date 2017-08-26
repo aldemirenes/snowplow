@@ -107,7 +107,17 @@ collector {
       retries = 0
     }
 
+    # config for NSQ sink
+    nsq {
+      # Host name for NSQ tools
+      host = "{{nsqHost}}"
+
+      # HTTP port for nsqd
+      port = "{{nsqdPort}}"
+    }
+
     # Incoming events are stored in a buffer before being sent to Kinesis/Kafka.
+    # Note: Buffering is not supported by NSQ.
     # The buffer is emptied whenever:
     # - the number of stored records reaches record-limit or
     # - the combined size of the stored records reaches byte-limit or
