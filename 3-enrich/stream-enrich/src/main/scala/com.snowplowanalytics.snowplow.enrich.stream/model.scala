@@ -39,6 +39,7 @@ object model {
   case object KafkaSink extends Sink
   case object KinesisSink extends Sink
   case object StdouterrSink extends Sink
+  case object NsqSink extends Sink
 
   /** Whether the sink is for good rows or bad rows */
   sealed trait InputType
@@ -114,6 +115,7 @@ object model {
       case "kinesis"   => KinesisSink
       case "kafka"     => KafkaSink
       case "stdouterr" => StdouterrSink
+      case "nsq"       => NsqSink
       case o           => throw new IllegalArgumentException(s"Unknown enrich.sink: $o")
     }
   }
